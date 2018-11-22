@@ -1,0 +1,14 @@
+# eclipse project file
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.classpath
+.project
+.metadata
+.loadpath
+.recommenders
