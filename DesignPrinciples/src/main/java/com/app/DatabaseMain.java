@@ -1,11 +1,11 @@
 package com.app;
 
-import com.app.gui.GUIEmbeddedSQL;
+import com.app.gui.MainMenuSQL;
 
 public class DatabaseMain {
 	
 	public static void main(String[] args) {
-		GUIEmbeddedSQL main = new GUIEmbeddedSQL("None atm");
+		MainMenuSQL main = new MainMenuSQL("None atm");
 		main.start();
 	}
 }
