@@ -1,4 +1,4 @@
-package com.app.gui;
+package com.app.bases;
 
 import java.awt.Dimension;
 
@@ -13,9 +13,9 @@ import javax.swing.JFrame;
  *
  */
 @SuppressWarnings("serial")
-public abstract class BaseFrame extends JFrame {
+public abstract class FrameBase extends JFrame {
 
-	public BaseFrame(String title) {
+	public FrameBase(String title) {
 		super(title);
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		super.setMinimumSize(new Dimension(800, 400));
