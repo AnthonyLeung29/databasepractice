@@ -5,6 +5,9 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
+import com.app.bases.FrameBase;
+import com.app.gui.menu.DBMenuBar;
+
 /**
  * This launches a GUI to handle SQL queries and requests given the database connection
  * 
@@ -12,7 +15,7 @@ import javax.swing.JLabel;
  *
  */
 @SuppressWarnings("serial")
-public class MainMenuSQL extends BaseFrame {
+public class MainMenuSQL extends FrameBase {
 	
 	private static final int FONTSIZE = 25;
 	private static final String WELCOME_MSG = "<html> Welcome! <br> "
@@ -35,5 +38,7 @@ public class MainMenuSQL extends BaseFrame {
 		help.setFont(font);
 		
 		super.add(help);
+		
+		super.setJMenuBar(new DBMenuBar());
 	}
 }
