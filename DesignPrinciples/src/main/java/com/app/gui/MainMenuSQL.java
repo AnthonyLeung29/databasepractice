@@ -1,11 +1,9 @@
 package com.app.gui;
 
+import java.awt.FlowLayout;
 import java.awt.Font;
 
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 /**
  * This launches a GUI to handle SQL queries and requests given the database connection
@@ -16,23 +14,26 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class MainMenuSQL extends BaseFrame {
 	
-	private BoxLayout layout;
+	private static final int FONTSIZE = 25;
+	private static final String WELCOME_MSG = "<html> Welcome! <br> "
+			+ "<br> Please click one of the options "
+			+ "<br> in the top left menu to get started :) </html>";
+	
+	private FlowLayout layout;
 	private JLabel help;
+	private Font font;
 
 	public MainMenuSQL (String connection) {
 		super("Embedded SQL GUI for " + connection);
 		
-		layout = new BoxLayout(super.getContentPane(), BoxLayout.PAGE_AXIS);
+		layout = new FlowLayout(FlowLayout.CENTER);
 		super.setLayout(layout);
 		
-		String msg = "<html> Welcome! <br> "
-				+ "Please click one of the options in the top "
-				+ "left menu to get started :) </html>";
-		help = new JLabel(msg);
-    	Font oldFont = help.getFont();
-    	Font newFont = new Font(oldFont.getName(), oldFont.getStyle(), 25);
-		help.setFont(newFont);
-    	
-		add(help);
+		font = new Font(Font.DIALOG, Font.PLAIN, FONTSIZE);
+		
+		help = new JLabel(WELCOME_MSG);
+		help.setFont(font);
+		
+		super.add(help);
 	}
 }
