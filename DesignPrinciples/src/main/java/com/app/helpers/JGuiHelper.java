@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -30,6 +31,14 @@ public class JGuiHelper {
 		}
 
 		return fields;
+	}
+	
+	public static List<JCheckBox> createCheckBoxes(List<String> labels) {
+		List<JCheckBox> boxes = new ArrayList<JCheckBox>();
+		for (String label : labels) {
+			boxes.add(new JCheckBox(label));
+		}
+		return boxes;
 	}
 
 	/**
@@ -59,7 +68,6 @@ public class JGuiHelper {
 
 		return p;
 	}
-
 	
 	// These under not used atm
 	/**

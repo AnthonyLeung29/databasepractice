@@ -1,22 +1,18 @@
 package com.app.product;
 
 public enum ProductCol {
-	BOOK("Book", BookCol.class),
-	MUSIC("Music", MusicCol.class);
+	BOOK("Book"),
+	MUSIC("Music"),
+	MOVIE("Movie");
 	
 	private String name;
-	private Class<?> enumClass;
 	
-	private <E extends Enum<E>> ProductCol(String name, Class<E> enumClass) {
+	private ProductCol(String name) {
 		this.name = name;
-		this.enumClass = enumClass;
 	}
 	
-	public String getName() {
+	public String getDisplayName() {
 		return this.name;
 	}
-	
-	public Class<?> getEnum() {
-		return enumClass;
-	}
+	// Fun task? find an algorithm to find common attributes of all 3 tables?
 }

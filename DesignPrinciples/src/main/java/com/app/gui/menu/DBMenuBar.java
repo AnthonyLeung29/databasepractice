@@ -3,6 +3,7 @@ package com.app.gui.menu;
 import javax.swing.JMenuBar;
 
 import com.app.gui.menu.data.DataMenu;
+import com.app.gui.menu.view.ViewMenu;
 
 /**
  * The menu bar that initializes and adds all the menus to be shown
@@ -22,5 +23,6 @@ public class DBMenuBar extends JMenuBar {
 	
 	private void initializeMenus() {
 		super.add(new DataMenu());
+		super.add(new ViewMenu());
 	}
 }
