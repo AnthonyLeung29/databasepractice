@@ -1,14 +1,23 @@
 package com.app.bases;
 
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.app.helpers.JGuiHelper;
 
+/**
+ * The base to create the frame with the body (the children) with a submit and cancel
+ * button below it
+ * 
+ * @author antho
+ *
+ */
 @SuppressWarnings("serial")
 public abstract class FieldsBase extends FrameBase implements ActionListener {
 
@@ -20,13 +29,20 @@ public abstract class FieldsBase extends FrameBase implements ActionListener {
 		private static final String CANCEL = "cancel";
 	}
 	
+	private JPanel fieldPanel;
+	private LayoutManager layout;
+	
 	public FieldsBase(String title) {
 		super(title);
-		super.add(getBodyPanel());
+		layout = new BoxLayout(getContentPane(), BoxLayout.Y_AXIS);
+		fieldPanel = new JPanel();
+		
+		super.setLayout(layout);
+		super.add(fieldPanel);
 		super.add(getButtonPanel());
 	}
 	
-	protected abstract JPanel getBodyPanel();
+	protected abstract JPanel getFieldsPanel();
 	
 	protected abstract boolean submitAction();
 
@@ -39,6 +55,12 @@ public abstract class FieldsBase extends FrameBase implements ActionListener {
 		} else if (cmd.equals(ActionConsts.CANCEL)) {
 			super.close();
 		}
+	}
+	
+	public void setBody(JPanel newBody) {
+		this.fieldPanel.removeAll();
+		this.fieldPanel.add(newBody);
+		super.update();
 	}
 	
 	protected void displaySubmittedDialog(boolean isSuccess) {

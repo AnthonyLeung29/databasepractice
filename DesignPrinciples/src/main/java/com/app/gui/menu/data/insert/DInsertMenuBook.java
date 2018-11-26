@@ -5,11 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
 
-import com.app.gui.menu.data.frames.BookFieldsFrame;
+import com.app.gui.menu.frames.VerticalFieldsFrame;
+import com.app.product.BookCol;
 
 @SuppressWarnings("serial")
 public class DInsertMenuBook extends JMenuItem implements ActionListener {
-
+	
 	public DInsertMenuBook() {
 		super("Book");
 		super.addActionListener(this);
@@ -17,7 +18,8 @@ public class DInsertMenuBook extends JMenuItem implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		BookFieldsFrame test = new BookFieldsFrame();
-		test.start();
+		//BookFieldsFrame test = new BookFieldsFrame();
+		VerticalFieldsFrame frame = new VerticalFieldsFrame("Book Fields", BookCol.class.getEnumConstants());
+		frame.start();
 	}
 }
