@@ -25,10 +25,10 @@ public class VerticalFieldsFrame extends FieldsBase {
 	private DbCol[] columns;
 	private HashMap<DbCol, JTextField> dataFields;
 	
-	public VerticalFieldsFrame(String title, DbCol[] productClass) {
+	public VerticalFieldsFrame(String title, DbCol[] colFields) {
 		super(title);
 		this.tableName = title;
-		this.columns = productClass;
+		this.columns = colFields;
 		this.dataFields = new HashMap<DbCol, JTextField>();
 		super.setBody(getFieldsPanel());
 	}

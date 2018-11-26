@@ -11,8 +11,10 @@ import javax.swing.JMenu;
 @SuppressWarnings("serial")
 public class DInsertMenu extends JMenu {
 	
+	private static final String DISPLAY_NAME = "Insert";
+	
 	public DInsertMenu() {
-		super("Insert");
+		super(DISPLAY_NAME);
 		initialize();
 	}
 	
