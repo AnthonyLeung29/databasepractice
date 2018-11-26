@@ -1,5 +1,7 @@
 package com.app.bases;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,12 +16,24 @@ public abstract class ProductBase implements Product {
 		setYear(year);
 	}
 	
-	protected abstract List<Object> getRestOfAttributes();
+	protected abstract List<Object> getRestOfAttributeValues();
 	
 	@Override
-	public List<Object> getAttributes() {
+	public List<String> getAttributes() {
+		List<String> attributes = new ArrayList<String>();
+		Field[] fields = getClass().getFields();
+		
+		for (Field f : fields) {
+			attributes.add(f.getName());
+		}
+		
+		return attributes;
+	}
+	
+	@Override
+	public List<Object> getAttributeValues() {
 		List<Object> base = Arrays.asList(name, year);
-		List<Object> rest = getRestOfAttributes();
+		List<Object> rest = getRestOfAttributeValues();
 		base.addAll(rest);
 		return base;
 	}

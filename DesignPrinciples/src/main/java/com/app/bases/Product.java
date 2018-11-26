@@ -4,5 +4,7 @@ import java.util.List;
 
 public interface Product {
 
-	public List<Object> getAttributes();
+	public List<String> getAttributes();
+	
+	public List<Object> getAttributeValues();
 }
