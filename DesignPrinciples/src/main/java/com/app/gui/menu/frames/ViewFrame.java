@@ -1,4 +1,4 @@
-package com.app.gui.menu.view;
+package com.app.gui.menu.frames;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.app.gui.menu.data;
+package com.app.gui.menu;
 
 import javax.swing.JMenu;
 
@@ -18,10 +18,10 @@ public class DataMenu extends JMenu {
 
 	public DataMenu() {
 		super("Data");
-		initialize();
+		this.addItems();
 	}
 	
-	private void initialize() {
+	private void addItems() {
 		super.add(new DInsertMenu());
 		super.addSeparator();
 		super.add(new DUpdateMenuItem());

@@ -1,9 +1,9 @@
-package com.app.gui.menu;
+package com.app.gui;
 
 import javax.swing.JMenuBar;
 
-import com.app.gui.menu.data.DataMenu;
-import com.app.gui.menu.view.ViewMenu;
+import com.app.gui.menu.DataMenu;
+import com.app.gui.menu.ViewMenu;
 
 /**
  * The menu bar that initializes and adds all the menus to be shown

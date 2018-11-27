@@ -1,4 +1,4 @@
-package com.app.gui.menu.view;
+package com.app.gui.menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,15 +6,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import com.app.gui.menu.frames.ViewFrame;
+
 @SuppressWarnings("serial")
 public class ViewMenu extends JMenu implements ActionListener {
 
 	public ViewMenu() {
 		super("View");
-		this.initialize();
+		this.addItems();
 	}
 	
-	private void initialize() {
+	private void addItems() {
 		JMenuItem open = new JMenuItem("Open view window");
 		open.addActionListener(this);
 		this.add(open);
