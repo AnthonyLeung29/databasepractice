@@ -23,7 +23,7 @@ public class MainMenuSQL extends FrameBase {
 	
 	private FlowLayout layout;
 	private JLabel help;
-	private Font font;
+	private Font font = new Font(Font.DIALOG, Font.PLAIN, FONTSIZE);;
 
 	public MainMenuSQL (String connection) {
 		super("Embedded SQL GUI for " + connection);
@@ -31,13 +31,10 @@ public class MainMenuSQL extends FrameBase {
 		layout = new FlowLayout(FlowLayout.CENTER);
 		super.setLayout(layout);
 		
-		font = new Font(Font.DIALOG, Font.PLAIN, FONTSIZE);
-		
 		help = new JLabel(WELCOME_MSG);
 		help.setFont(font);
 		
 		super.add(help);
-		
 		super.setJMenuBar(new DBMenuBar());
 	}
 }
