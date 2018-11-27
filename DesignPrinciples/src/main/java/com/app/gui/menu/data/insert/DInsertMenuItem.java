@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
 
-import com.app.bases.Product;
 import com.app.gui.menu.frames.VerticalFieldsFrame;
 import com.app.product.ProductCol;
 
