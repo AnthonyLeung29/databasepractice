@@ -25,7 +25,6 @@ public class JGuiHelper {
 
 	public static List<JTextField> createTextFields(int number) {
 		List<JTextField> fields = new ArrayList<JTextField>();
-
 		for (int i = 0; i < number; i++) {
 			fields.add(new JTextField(20));
 		}

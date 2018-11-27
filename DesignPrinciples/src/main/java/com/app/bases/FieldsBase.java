@@ -13,7 +13,9 @@ import com.app.helpers.JGuiHelper;
 
 /**
  * The base to create the frame with the body (the children) with a submit and cancel
- * button below it
+ * button below it. <br>
+ * On a successful submit, a display message will pop up indicating that the request
+ * has been successful
  * 
  * @author antho
  *
@@ -44,6 +46,12 @@ public abstract class FieldsBase extends FrameBase implements ActionListener {
 	
 	protected abstract JPanel getFieldsPanel();
 	
+	/**
+	 * A method that all children must have to dictate what the
+	 * submit button will do for this frame.
+	 * 
+	 * @return a boolean indication if the action succeeded
+	 */
 	protected abstract boolean submitAction();
 
 	@Override
