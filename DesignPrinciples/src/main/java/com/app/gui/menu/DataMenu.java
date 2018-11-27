@@ -1,7 +1,6 @@
 package com.app.gui.menu;
 
-import javax.swing.JMenu;
-
+import com.app.bases.MenuBase;
 import com.app.gui.menu.data.insert.DInsertMenu;
 import com.app.gui.menu.data.remove.DRemoveMenuItem;
 import com.app.gui.menu.data.update.DUpdateMenuItem;
@@ -14,14 +13,15 @@ import com.app.gui.menu.data.update.DUpdateMenuItem;
  *
  */
 @SuppressWarnings("serial")
-public class DataMenu extends JMenu {
+public class DataMenu extends MenuBase {
 
+	private static final String DISPLAY_NAME = "Data";
+	
 	public DataMenu() {
-		super("Data");
-		this.addItems();
+		super(DISPLAY_NAME);
 	}
 	
-	private void addItems() {
+	protected void addItems() {
 		super.add(new DInsertMenu());
 		super.addSeparator();
 		super.add(new DUpdateMenuItem());

@@ -1,31 +1,18 @@
 package com.app.gui.menu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-
-import com.app.gui.menu.frames.ViewFrame;
+import com.app.bases.MenuBase;
+import com.app.gui.menu.view.ViewWindowMenuItem;
 
 @SuppressWarnings("serial")
-public class ViewMenu extends JMenu implements ActionListener {
+public class ViewMenu extends MenuBase {
 
+	private static final String DISPLAY_NAME = "View";
+	
 	public ViewMenu() {
-		super("View");
-		this.addItems();
+		super(DISPLAY_NAME);
 	}
 	
-	private void addItems() {
-		JMenuItem open = new JMenuItem("Open view window");
-		open.addActionListener(this);
-		this.add(open);
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		ViewFrame frame = new ViewFrame();
-		frame.start();
+	protected void addItems() {
+		super.add(new ViewWindowMenuItem());
 	}
 }

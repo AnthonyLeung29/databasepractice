@@ -1,6 +1,6 @@
 package com.app.gui.menu.data.insert;
 
-import javax.swing.JMenu;
+import com.app.bases.MenuBase;
 
 /**
  * The submenu for the data menu option.
@@ -9,18 +9,17 @@ import javax.swing.JMenu;
  *
  */
 @SuppressWarnings("serial")
-public class DInsertMenu extends JMenu {
+public class DInsertMenu extends MenuBase {
 	
 	private static final String DISPLAY_NAME = "Insert";
 	
 	public DInsertMenu() {
 		super(DISPLAY_NAME);
-		initialize();
 	}
 	
-	private void initialize() {
-		super.add(new DInsertMenuBook());
-		super.add(new DInsertMenuMusic());
-		super.add(new DInsertMenuMovie());
+	protected void addItems() {
+		super.add(new DInsertMenuItemBook());
+		super.add(new DInsertMenuItemMusic());
+		super.add(new DInsertMenuItemMovie());
 	}
 }

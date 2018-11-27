@@ -1,7 +1,6 @@
 package com.app.gui.menu;
 
-import javax.swing.JMenu;
-
+import com.app.bases.MenuBase;
 import com.app.gui.menu.report.Report1;
 import com.app.gui.menu.report.Report10;
 import com.app.gui.menu.report.Report2;
@@ -14,14 +13,15 @@ import com.app.gui.menu.report.Report8;
 import com.app.gui.menu.report.Report9;
 
 @SuppressWarnings("serial")
-public class ReportMenu extends JMenu {
+public class ReportMenu extends MenuBase {
 
+	private static final String DISPLAY_NAME = "Report";
+	
 	public ReportMenu() {
-		super("Report");
-		this.addItems();
+		super(DISPLAY_NAME);
 	}
 	
-	private void addItems() {
+	protected void addItems() {
 		super.add(new Report1());
 		super.add(new Report2());
 		super.add(new Report3());
