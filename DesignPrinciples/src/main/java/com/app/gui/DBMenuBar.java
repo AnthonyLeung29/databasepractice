@@ -3,6 +3,7 @@ package com.app.gui;
 import javax.swing.JMenuBar;
 
 import com.app.gui.menu.DataMenu;
+import com.app.gui.menu.ReportMenu;
 import com.app.gui.menu.ViewMenu;
 
 /**
@@ -18,11 +19,12 @@ public class DBMenuBar extends JMenuBar {
 
 	public DBMenuBar() {
 		super();
-		initializeMenus();
+		this.addMenus();
 	}
 	
-	private void initializeMenus() {
+	private void addMenus() {
 		super.add(new DataMenu());
 		super.add(new ViewMenu());
+		super.add(new ReportMenu());
 	}
 }
