@@ -1,7 +1,7 @@
 package com.app.gui.menu;
 
 import com.app.bases.MenuBase;
-import com.app.gui.menu.view.ViewWindowMenuItem;
+import com.app.gui.menu.view.VNewWindow;
 
 @SuppressWarnings("serial")
 public class ViewMenu extends MenuBase {
@@ -13,6 +13,6 @@ public class ViewMenu extends MenuBase {
 	}
 	
 	protected void addItems() {
-		super.add(new ViewWindowMenuItem());
+		super.add(new VNewWindow());
 	}
 }

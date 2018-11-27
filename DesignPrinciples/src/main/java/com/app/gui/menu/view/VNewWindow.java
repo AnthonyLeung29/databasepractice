@@ -6,11 +6,11 @@ import com.app.bases.MenuItemBase;
 import com.app.gui.menu.frames.ViewFrame;
 
 @SuppressWarnings("serial")
-public class ViewWindowMenuItem extends MenuItemBase {
+public class VNewWindow extends MenuItemBase {
 
 	private static final String DISPLAY_NAME = "Open new view window";
 	
-	public ViewWindowMenuItem() {
+	public VNewWindow() {
 		super(DISPLAY_NAME);
 	}
 

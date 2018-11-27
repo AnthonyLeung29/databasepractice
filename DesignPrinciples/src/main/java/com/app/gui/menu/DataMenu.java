@@ -1,9 +1,8 @@
 package com.app.gui.menu;
 
 import com.app.bases.MenuBase;
-import com.app.gui.menu.data.insert.DInsertMenu;
-import com.app.gui.menu.data.remove.DRemoveMenuItem;
-import com.app.gui.menu.data.update.DUpdateMenuItem;
+import com.app.gui.menu.data.remove.DRemoveItem;
+import com.app.gui.menu.data.update.DUpdateItem;
 
 /**
  * This is a menu on the menubar. Initializes and adds all the wanted submenus
@@ -24,7 +23,7 @@ public class DataMenu extends MenuBase {
 	protected void addItems() {
 		super.add(new DInsertMenu());
 		super.addSeparator();
-		super.add(new DUpdateMenuItem());
-		super.add(new DRemoveMenuItem());
+		super.add(new DUpdateItem());
+		super.add(new DRemoveItem());
 	}
 }

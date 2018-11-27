@@ -7,11 +7,11 @@ import javax.swing.JOptionPane;
 import com.app.bases.MenuItemBase;
 
 @SuppressWarnings("serial")
-public class DRemoveMenuItem extends MenuItemBase {
+public class DRemoveItem extends MenuItemBase {
 
 	private static final String DISPLAY_NAME = "Remove";
 	
-	public DRemoveMenuItem() {
+	public DRemoveItem() {
 		super(DISPLAY_NAME);
 	}
 	

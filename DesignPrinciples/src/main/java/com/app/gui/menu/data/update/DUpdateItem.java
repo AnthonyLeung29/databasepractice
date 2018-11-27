@@ -10,11 +10,11 @@ import javax.swing.JOptionPane;
 import com.app.gui.menu.frames.VerticalFieldsFrame;
 
 @SuppressWarnings("serial")
-public class DUpdateMenuItem extends JMenuItem implements ActionListener {
+public class DUpdateItem extends JMenuItem implements ActionListener {
 
 	private static final String DISPLAY_NAME = "Update";
 	
-	public DUpdateMenuItem() {
+	public DUpdateItem() {
 		super(DISPLAY_NAME);
 		super.addActionListener(this);
 	}
