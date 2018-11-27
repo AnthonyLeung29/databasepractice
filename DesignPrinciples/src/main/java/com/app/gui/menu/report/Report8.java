@@ -1,18 +1,16 @@
 package com.app.gui.menu.report;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JMenuItem;
+import com.app.bases.MenuItemBase;
 
 @SuppressWarnings("serial")
-public class Report8 extends JMenuItem implements ActionListener {
+public class Report8 extends MenuItemBase {
 
 	private final static String DISPLAY_NAME = "Music with Similar Name";
 	
 	public Report8() {
 		super(DISPLAY_NAME);
-		super.addActionListener(this);
 	}
 	
 	@Override

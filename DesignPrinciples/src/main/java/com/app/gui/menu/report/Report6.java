@@ -1,18 +1,16 @@
 package com.app.gui.menu.report;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JMenuItem;
+import com.app.bases.MenuItemBase;
 
 @SuppressWarnings("serial")
-public class Report6 extends JMenuItem implements ActionListener {
+public class Report6 extends MenuItemBase {
 
 	private final static String DISPLAY_NAME = "Multi Skills Movie Crew";
 	
 	public Report6() {
 		super(DISPLAY_NAME);
-		super.addActionListener(this);
 	}
 	
 	@Override
