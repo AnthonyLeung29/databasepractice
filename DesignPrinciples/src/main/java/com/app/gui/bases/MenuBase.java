@@ -1,4 +1,4 @@
-package com.app.bases;
+package com.app.gui.bases;
 
 import javax.swing.JMenu;
 

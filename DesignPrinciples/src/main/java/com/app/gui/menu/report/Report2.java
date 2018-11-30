@@ -2,7 +2,7 @@ package com.app.gui.menu.report;
 
 import java.awt.event.ActionEvent;
 
-import com.app.bases.MenuItemBase;
+import com.app.gui.bases.MenuItemBase;
 
 @SuppressWarnings("serial")
 public class Report2 extends MenuItemBase {

@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
-import com.app.bases.MenuItemBase;
+import com.app.gui.bases.MenuItemBase;
 
 @SuppressWarnings("serial")
 public class DRemoveItem extends MenuItemBase {

@@ -1,6 +1,6 @@
 package com.app.gui.menu;
 
-import com.app.bases.MenuBase;
+import com.app.gui.bases.MenuBase;
 import com.app.gui.menu.data.remove.DRemoveItem;
 import com.app.gui.menu.data.update.DUpdateItem;
 

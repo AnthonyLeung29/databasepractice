@@ -1,4 +1,4 @@
-package com.app.bases;
+package com.app.gui.bases;
 
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;

@@ -1,6 +1,6 @@
 package com.app.gui.menu;
 
-import com.app.bases.MenuBase;
+import com.app.gui.bases.MenuBase;
 import com.app.gui.menu.data.insert.DInsertBook;
 import com.app.gui.menu.data.insert.DInsertMovie;
 import com.app.gui.menu.data.insert.DInsertMusic;

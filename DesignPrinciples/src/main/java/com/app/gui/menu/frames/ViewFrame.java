@@ -10,7 +10,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.app.bases.FieldsBase;
+import com.app.gui.bases.FieldsBase;
 import com.app.helpers.JGuiHelper;
 import com.app.product.ProductCol;
 

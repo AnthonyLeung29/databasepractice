@@ -5,7 +5,7 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
-import com.app.bases.FrameBase;
+import com.app.gui.bases.FrameBase;
 
 /**
  * This launches a GUI to handle SQL queries and requests given the database connection

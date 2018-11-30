@@ -2,7 +2,7 @@ package com.app.gui.menu.view;
 
 import java.awt.event.ActionEvent;
 
-import com.app.bases.MenuItemBase;
+import com.app.gui.bases.MenuItemBase;
 import com.app.gui.menu.frames.ViewFrame;
 
 @SuppressWarnings("serial")
