@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
+/**
+ * Interface to dictate the fields to be created in the gui for the products
+ * 
+ * @author antho
+ *
+ */
 public interface ProductFields {
 
 	public String getDisplayName();
