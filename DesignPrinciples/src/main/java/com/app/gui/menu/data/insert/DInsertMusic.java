@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import com.app.gui.bases.MenuItemBase;
 import com.app.gui.menu.frames.VerticalFieldsFrame;
-import com.app.product.MusicCol;
+import com.app.gui.menu.frames.fields.MusicFields;
 
 @SuppressWarnings("serial")
 public class DInsertMusic extends MenuItemBase {
@@ -17,7 +17,7 @@ public class DInsertMusic extends MenuItemBase {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		VerticalFieldsFrame frame = new VerticalFieldsFrame(DISPLAY_NAME + " Fields", MusicCol.class.getEnumConstants());
+		VerticalFieldsFrame frame = new VerticalFieldsFrame(DISPLAY_NAME + " Fields", MusicFields.class.getEnumConstants());
 		frame.start();
 	}
 }

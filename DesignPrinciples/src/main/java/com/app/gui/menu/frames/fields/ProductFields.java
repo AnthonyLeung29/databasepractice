@@ -1,10 +1,10 @@
-package com.app.product;
+package com.app.gui.menu.frames.fields;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
-public interface DbCol {
+public interface ProductFields {
 
 	public String getDisplayName();
 	

@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import com.app.gui.bases.MenuItemBase;
 import com.app.gui.menu.frames.VerticalFieldsFrame;
-import com.app.product.MovieCol;
+import com.app.gui.menu.frames.fields.MovieFields;
 
 @SuppressWarnings("serial")
 public class DInsertMovie extends MenuItemBase {
@@ -17,7 +17,7 @@ public class DInsertMovie extends MenuItemBase {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		VerticalFieldsFrame frame = new VerticalFieldsFrame(DISPLAY_NAME + " Fields", MovieCol.class.getEnumConstants());
+		VerticalFieldsFrame frame = new VerticalFieldsFrame(DISPLAY_NAME + " Fields", MovieFields.class.getEnumConstants());
 		frame.start();
 	}
 }

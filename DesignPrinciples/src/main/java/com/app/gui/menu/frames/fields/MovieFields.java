@@ -1,11 +1,11 @@
-package com.app.product;
+package com.app.gui.menu.frames.fields;
 
-public enum MovieCol implements DbCol {
+public enum MovieFields implements ProductFields {
 	NAME("Name");
 	
 	private String displayName;
 	
-	private MovieCol(String displayName) {
+	private MovieFields(String displayName) {
 		this.displayName = displayName;
 	}
 	

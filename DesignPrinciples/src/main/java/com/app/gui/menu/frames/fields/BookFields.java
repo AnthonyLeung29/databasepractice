@@ -1,9 +1,9 @@
-package com.app.product;
+package com.app.gui.menu.frames.fields;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public enum BookCol implements DbCol {
+public enum BookFields implements ProductFields {
 	NAME("Name"),
 	YEAR("Year Of Publication"),
 	ISBN("ISBN Number"),
@@ -19,7 +19,7 @@ public enum BookCol implements DbCol {
 	
 	private String displayName;
 	
-	private BookCol(String displayName) {
+	private BookFields(String displayName) {
 		this.displayName = displayName;
 	}
 	
@@ -30,9 +30,9 @@ public enum BookCol implements DbCol {
 	// Only used once atm
 	public static List<String> getDisplayNames() {
 		List<String> names = new ArrayList<String>();
-		BookCol[] values = BookCol.values();
+		BookFields[] values = BookFields.values();
 		
-		for (BookCol value : values) {
+		for (BookFields value : values) {
 			names.add(value.getDisplayName());
 		}
 		

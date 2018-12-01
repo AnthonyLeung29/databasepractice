@@ -1,11 +1,11 @@
-package com.app.product;
+package com.app.gui.menu.frames.fields;
 
-public enum MusicCol implements DbCol {
+public enum MusicFields implements ProductFields {
 	NAME("Name");
 	
 	private String displayName;
 	
-	private MusicCol(String displayName) {
+	private MusicFields(String displayName) {
 		this.displayName = displayName;
 	}
 	

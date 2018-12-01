@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.app.gui.bases.FieldsBase;
+import com.app.gui.menu.frames.fields.ProductFields;
 import com.app.helpers.JGuiHelper;
-import com.app.product.DbCol;
 
 /**
  * Creates a fields frame with the labels on the left side
@@ -22,21 +22,21 @@ import com.app.product.DbCol;
 public class VerticalFieldsFrame extends FieldsBase {
 
 	private String tableName;
-	private DbCol[] columns;
-	private HashMap<DbCol, JTextField> dataFields;
+	private ProductFields[] columns;
+	private HashMap<ProductFields, JTextField> dataFields;
 	
-	public VerticalFieldsFrame(String tableName, DbCol[] colFields) {
+	public VerticalFieldsFrame(String tableName, ProductFields[] colFields) {
 		super(tableName);
 		this.tableName = tableName;
 		this.columns = colFields;
-		this.dataFields = new HashMap<DbCol, JTextField>();
+		this.dataFields = new HashMap<ProductFields, JTextField>();
 		super.setBody(getFieldsPanel());
 	}
 
 	@Override
 	protected JPanel getFieldsPanel() {
 		List<String> labels = new ArrayList<String>();
-		for (DbCol col : columns) {
+		for (ProductFields col : columns) {
 			labels.add(col.getDisplayName());
 		}
 		
