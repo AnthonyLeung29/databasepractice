@@ -21,7 +21,9 @@ import com.app.database.tables.TableAttributes.RoleAttributes;
  * Helps to manage inserts into the database. <br>
  * Error checking is done here. and it's built around the business rules of the database 
  * and lets you insert to each table individually. <br> 
- * There are overridden methods for those tables that have mandatory fields (one for mandatory, one for all)
+ * There are overridden methods for those tables that have mandatory fields (one for mandatory, one for all) <br>
+ * <br>
+ * Updated to the database as of Dec 1st, 2018
  * 
  * @author antho
  *
@@ -59,11 +61,7 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertBookAuthor(String isbn, String firstName, String lastName) {
-		int authorId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		if (authorId < 0) {
-			insertPeopleInvolved(firstName, lastName);
-			authorId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		}
+		int authorId = getOrAddPersonId(firstName, lastName);
 		
 		return insertBookAuthor(isbn, authorId);
 	}
@@ -137,11 +135,7 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertPeopleInvolvedMusic(String albumName, int year, String musicName, String firstName, String lastName) {
-		int personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		if (personId < 0) {
-			insertPeopleInvolved(firstName, lastName);
-			personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		}
+		int personId = getOrAddPersonId(firstName, lastName);
 		
 		return insertPeopleInvolvedMusic(albumName, year, musicName, personId);
 	}
@@ -159,11 +153,7 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertPeopleInvolvedMusic(String albumName, int year, String musicName, String firstName, String lastName, int isSongWriter, int isComposer, int isArranger) {
-		int personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		if (personId < 0) {
-			insertPeopleInvolved(firstName, lastName);
-			personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		}
+		int personId = getOrAddPersonId(firstName, lastName);
 		
 		return insertPeopleInvolvedMusic(albumName, year, musicName, personId, isSongWriter, isComposer, isArranger);
 	}
@@ -193,11 +183,7 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertCrewMember(String firstName, String lastName, String movieName, int year) {
-		int personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		if (personId < 0) {
-			insertPeopleInvolved(firstName, lastName);
-			personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		}
+		int personId = getOrAddPersonId(firstName, lastName);
 		
 		return insertCrewMember(personId, movieName, year);
 	}
@@ -214,11 +200,7 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertAward(String firstName, String lastName, String movieName, int year, int award) {
-		int personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		if (personId < 0) {
-			insertPeopleInvolved(firstName, lastName);
-			personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		}
+		int personId = getOrAddPersonId(firstName, lastName);
 		
 		return insertAward(personId, movieName, year, award);
 	}
@@ -243,11 +225,7 @@ public class DatabaseInsertHelper {
 	// ===== INSERT MUSIC =====
 	
 	public static int insertMusic(String albumName, int year, String musicName, String producerFirstName, String producerLastName) {
-		int producerId = DatabaseSelectHelper.getPersonInvolvedId(producerFirstName, producerLastName);
-		if (producerId < 0) {
-			insertPeopleInvolved(producerFirstName, producerLastName);
-			producerId = DatabaseSelectHelper.getPersonInvolvedId(producerFirstName, producerLastName);
-		}
+		int producerId = getOrAddPersonId(producerFirstName, producerLastName);
 		
 		return insertMusic(albumName, year, musicName, producerId);
 	}
@@ -264,11 +242,7 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertMusic(String albumName, int year, String musicName, String language, String diskType, String producerFirstName, String producerLastName) {
-		int producerId = DatabaseSelectHelper.getPersonInvolvedId(producerFirstName, producerLastName);
-		if (producerId < 0) {
-			insertPeopleInvolved(producerFirstName, producerLastName);
-			producerId = DatabaseSelectHelper.getPersonInvolvedId(producerFirstName, producerLastName);
-		}
+		int producerId = getOrAddPersonId(producerFirstName, producerLastName);
 		
 		return insertMusic(albumName, year, musicName, language, diskType, producerId);
 	}
@@ -287,11 +261,7 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertMusicSinger(String albumName, int year, String musicName, String firstName, String lastName) {
-		int personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		if (personId < 0) {
-			insertPeopleInvolved(firstName, lastName);
-			personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
-		}
+		int personId = getOrAddPersonId(firstName, lastName);
 		
 		return insertMusicSinger(albumName, year, musicName, personId);
 	}
@@ -305,5 +275,23 @@ public class DatabaseInsertHelper {
 		
 		List<Object> data = Arrays.asList(albumName, year, musicName, personId);
 		return DatabaseInserter.insert(Table.MUSIC_SINGER, attributes, data);
+	}
+	
+	/**
+	 * Gets the id of the person with the given first name and last name.
+	 * If the person does not exist, it will add the person.
+	 * 
+	 * @param firstName
+	 * @param lastName
+	 * @return
+	 */
+	private static int getOrAddPersonId(String firstName, String lastName) {
+		int personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
+		if (personId < 0) {
+			insertPeopleInvolved(firstName, lastName);
+			personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
+		}
+		
+		return personId;
 	}
 }

@@ -35,7 +35,7 @@ public class DatabaseInserter extends DatabaseExecuteUpdate {
 	 * @return
 	 */
 	private static String getFormattedInsertSQL(String tableName, List<String> attributes) {
-		// String of size n consisting of (?, ?, ?,...)
+		// String of size n consisting of "?, ?, ?,..."
 		List<String> emptyValues = new ArrayList<String>(Collections.nCopies(attributes.size(), "?"));
 		
 		// Comma separated attributes and values

@@ -1,5 +1,13 @@
 package com.app.database.tables;
 
+/**
+ * A class that contains all the current tables and their table names.
+ * <br>
+ * Updated as of Dec 1st.
+ * 
+ * @author antho
+ *
+ */
 public class Table {
 	public static final String AWARD = "Award";
 	public static final String BOOK = "Book";
