@@ -3,8 +3,7 @@ package com.app.gui.menu.data.insert;
 import java.awt.event.ActionEvent;
 
 import com.app.gui.bases.MenuItemBase;
-import com.app.gui.menu.frames.VerticalFieldsFrame;
-import com.app.gui.menu.frames.fields.BookFields;
+import com.app.gui.menu.frames.BookFieldsFrame;
 
 @SuppressWarnings("serial")
 public class DInsertBook extends MenuItemBase {
@@ -17,7 +16,7 @@ public class DInsertBook extends MenuItemBase {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		VerticalFieldsFrame frame = new VerticalFieldsFrame(DISPLAY_NAME + " Fields", BookFields.class.getEnumConstants());
+		BookFieldsFrame frame = new BookFieldsFrame();
 		frame.start();
 	}
 }

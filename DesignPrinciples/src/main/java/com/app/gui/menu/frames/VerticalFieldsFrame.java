@@ -1,15 +1,14 @@
 package com.app.gui.menu.frames;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import com.app.gui.bases.FieldsBase;
-import com.app.gui.menu.frames.fields.ProductFields;
-import com.app.helpers.JGuiHelper;
+import com.app.helpers.GuiHelper;
 
 /**
  * Creates a fields frame with the labels on the left side
@@ -19,40 +18,53 @@ import com.app.helpers.JGuiHelper;
  *
  */
 @SuppressWarnings("serial")
-public class VerticalFieldsFrame extends FieldsBase {
+public abstract class VerticalFieldsFrame extends FieldsBase {
 
-	private String tableName;
-	private ProductFields[] columns;
-	private HashMap<ProductFields, JTextField> dataFields;
+	/**
+	 * Interface to dictate subclasses and how they will create fields
+	 * 
+	 * @author antho
+	 *
+	 */
+	public interface ProductFields {
+
+		public String getDisplayName();
+		
+		// Unused atm
+		public static <E extends Enum<E>> List<String> getDisplayNames(Class<E> dbAttributes) {
+			List<String> names = new ArrayList<String>();
+			for (E dataEnum : EnumSet.allOf(dbAttributes)) {
+				names.add(dataEnum.name());
+			}
+			
+			return names;
+		}
+	}
 	
-	public VerticalFieldsFrame(String tableName, ProductFields[] colFields) {
-		super(tableName);
-		this.tableName = tableName;
-		this.columns = colFields;
-		this.dataFields = new HashMap<ProductFields, JTextField>();
+	private ProductFields[] fieldNames;
+	
+	protected HashMap<ProductFields, ATextField> dataFields;
+	
+	public VerticalFieldsFrame(String title, ProductFields[] fields) {
+		super(title);
+		this.fieldNames = fields;
+		this.dataFields = new HashMap<ProductFields, ATextField>();
 		super.setBody(getFieldsPanel());
 	}
 
 	@Override
 	protected JPanel getFieldsPanel() {
 		List<String> labels = new ArrayList<String>();
-		for (ProductFields col : columns) {
+		for (ProductFields col : fieldNames) {
 			labels.add(col.getDisplayName());
 		}
 		
-		List<JTextField> textFields = JGuiHelper.createTextFields(labels.size());
+		List<ATextField> textFields = GuiHelper.createTextFields(labels.size());
 		for (int i = 0; i < labels.size(); i ++) {
-			dataFields.put(columns[i], textFields.get(i));
+			dataFields.put(fieldNames[i], textFields.get(i));
 		}
 		
-		JPanel p = JGuiHelper.createLabelPanel(labels, textFields);
+		JPanel p = GuiHelper.createLabelPanel(labels, textFields);
 		return p;
-	}
-
-	@Override
-	protected boolean submitAction() {
-		// TODO Insert all the fields from the hashmap into the database
-		tableName.length();
-		return false;
 	}
 }

@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import com.app.helpers.JGuiHelper;
+import com.app.helpers.GuiHelper;
 
 /**
  * The base to create the frame with the body (the children) with a submit and cancel
@@ -81,8 +81,8 @@ public abstract class FieldsBase extends FrameBase implements ActionListener {
 	
 	private JPanel getButtonPanel() {
 		JPanel p = new JPanel();
-		JButton submitBtn = JGuiHelper.createButton("Submit", this, ActionConsts.SUBMIT);
-		JButton cancelBtn = JGuiHelper.createButton("Cancel", this, ActionConsts.CANCEL);
+		JButton submitBtn = GuiHelper.createButton("Submit", this, ActionConsts.SUBMIT);
+		JButton cancelBtn = GuiHelper.createButton("Cancel", this, ActionConsts.CANCEL);
 
 		p.add(submitBtn);
 		p.add(cancelBtn);

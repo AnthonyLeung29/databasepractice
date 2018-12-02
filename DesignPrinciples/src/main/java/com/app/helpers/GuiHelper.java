@@ -12,9 +12,10 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-public class JGuiHelper {
+import com.app.gui.menu.frames.ATextField;
+
+public class GuiHelper {
 
 	public static JButton createButton(String name, ActionListener listener, String actionCommand) {
 		JButton btn = new JButton(name);
@@ -23,10 +24,10 @@ public class JGuiHelper {
 		return btn;
 	}
 
-	public static List<JTextField> createTextFields(int number) {
-		List<JTextField> fields = new ArrayList<JTextField>();
+	public static List<ATextField> createTextFields(int number) {
+		List<ATextField> fields = new ArrayList<ATextField>();
 		for (int i = 0; i < number; i++) {
-			fields.add(new JTextField(20));
+			fields.add(new ATextField());
 		}
 
 		return fields;
@@ -49,7 +50,7 @@ public class JGuiHelper {
 	 * @param textfields
 	 * @return
 	 */
-	public static JPanel createLabelPanel(List<String> labels, List<JTextField> textFields) {
+	public static JPanel createLabelPanel(List<String> labels, List<ATextField> textFields) {
 		int size;
 		if (labels.size() == textFields.size()) {
 			size = labels.size();

@@ -1,8 +1,9 @@
-package com.app.database;
+package com.app.database.helper;
 
 import java.util.Arrays;
 import java.util.List;
 
+import com.app.database.DatabaseInserter;
 import com.app.database.tables.Table;
 import com.app.database.tables.TableAttributes.AwardAttributes;
 import com.app.database.tables.TableAttributes.BookAttributes;
@@ -35,6 +36,10 @@ public class DatabaseInsertHelper {
 	// ===== INSERT BOOK =====
 	
 	public static int insertBook(String isbn, String title, String publisher, int numPages, int year) {
+		if (numPages < 0 || year < 0) {
+			return -1;
+		}
+		
 		List<String> attributes = Arrays.asList(
 				BookAttributes.ISBN,
 				BookAttributes.TITLE,
@@ -46,7 +51,45 @@ public class DatabaseInsertHelper {
 		return DatabaseInserter.insert(Table.BOOK, attributes, data);
 	}
 	
+	public static int insertBook(String isbn, String title, String publisher, int numPages, int year, int editionNum) {
+		if (numPages < 0 || year < 0 || editionNum < 0) {
+			return -1;
+		}
+		
+		List<String> attributes = Arrays.asList(
+				BookAttributes.ISBN,
+				BookAttributes.TITLE,
+				BookAttributes.PUBLISHER,
+				BookAttributes.NUMBER_OF_PAGES,
+				BookAttributes.YEAR_OF_PUBLICATION,
+				BookAttributes.EDITION_NUMBER);
+		List<Object> data = Arrays.asList(isbn, title, publisher, numPages, year, editionNum);
+		
+		return DatabaseInserter.insert(Table.BOOK, attributes, data);
+	}
+	
+	public static int insertBook(String isbn, String title, String publisher, int numPages, int year, String description) {
+		if (numPages < 0 || year < 0) {
+			return -1;
+		}
+		
+		List<String> attributes = Arrays.asList(
+				BookAttributes.ISBN,
+				BookAttributes.TITLE,
+				BookAttributes.PUBLISHER,
+				BookAttributes.NUMBER_OF_PAGES,
+				BookAttributes.YEAR_OF_PUBLICATION,
+				BookAttributes.ABSTRACT);
+		List<Object> data = Arrays.asList(isbn, title, publisher, numPages, year, description);
+		
+		return DatabaseInserter.insert(Table.BOOK, attributes, data);
+	}
+	
 	public static int insertBook(String isbn, String title, String publisher, int numPages, int year, int editionNum, String description) {
+		if (numPages < 0 || year < 0 || editionNum < 0) {
+			return -1;
+		}
+		
 		List<String> attributes = Arrays.asList(
 				BookAttributes.ISBN,
 				BookAttributes.TITLE,
@@ -62,6 +105,12 @@ public class DatabaseInsertHelper {
 	
 	public static int insertBookAuthor(String isbn, String firstName, String lastName) {
 		int authorId = getOrAddPersonId(firstName, lastName);
+		
+		return insertBookAuthor(isbn, authorId);
+	}
+	
+	public static int insertBookAuthor(String isbn, String firstName, String lastName, String middleName) {
+		int authorId = getOrAddPersonId(firstName, lastName, middleName);
 		
 		return insertBookAuthor(isbn, authorId);
 	}
@@ -124,6 +173,10 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertPeopleInvolved(String firstName, String middleName, String lastName, int gender) {
+		if (gender < 0 ) {
+			return -1;
+		}
+		
 		List<String> attributes = Arrays.asList(
 				PeopleInvolvedAttributes.FIRST_NAME,
 				PeopleInvolvedAttributes.MIDDLE_NAME,
@@ -141,6 +194,10 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertPeopleInvolvedMusic(String albumName, int year, String musicName, int personId) {
+		if ( year < 0 ) {
+			return -1;
+		}
+		
 		List<String> attributes = Arrays.asList(
 				PeopleInvolvedMusicAttributes.ALBUM_NAME,
 				PeopleInvolvedMusicAttributes.YEAR,
@@ -159,6 +216,10 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertPeopleInvolvedMusic(String albumName, int year, String musicName, int personId, int isSongWriter, int isComposer, int isArranger) {
+		if (isSongWriter < 0 || year < 0 || isComposer < 0 || isArranger < 0) {
+			return -1;
+		}
+		
 		List<String> attributes = Arrays.asList(
 				PeopleInvolvedMusicAttributes.ALBUM_NAME,
 				PeopleInvolvedMusicAttributes.YEAR,
@@ -176,6 +237,10 @@ public class DatabaseInsertHelper {
 	// ===== INSERT MOVIE =====
 	
 	public static int insertMovie(String movieName, int year) {
+		if ( year < 0 ) {
+			return -1;
+		}
+		
 		List<String> attributes = Arrays.asList(MovieAttributes.MOVIE_NAME, MovieAttributes.YEAR);
 		List<Object> data = Arrays.asList(movieName, year);
 		
@@ -189,6 +254,10 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertCrewMember(int personId, String movieName, int year) {
+		if ( year < 0 ) {
+			return -1;
+		}
+		
 		List<String> attributes = Arrays.asList(
 				CrewMemberAttributes.PEOPLE_INVOLVED_ID,
 				CrewMemberAttributes.MOVIE_NAME,
@@ -199,13 +268,17 @@ public class DatabaseInsertHelper {
 		return DatabaseInserter.insert(Table.CREW_MEMBER, attributes, data);
 	}
 	
-	public static int insertAward(String firstName, String lastName, String movieName, int year, int award) {
+	public static int insertAward(String firstName, String lastName, String movieName, int year, int award) {	
 		int personId = getOrAddPersonId(firstName, lastName);
 		
 		return insertAward(personId, movieName, year, award);
 	}
 	
 	public static int insertAward(int personId, String movieName, int year, int award) {
+		if ( year < 0 || award < 0) {
+			return -1;
+		}
+		
 		List<String> attributes = Arrays.asList(
 				AwardAttributes.PEOPLE_INVOLVED_ID,
 				AwardAttributes.MOVIE_NAME,
@@ -231,6 +304,10 @@ public class DatabaseInsertHelper {
 	}
 	
 	public static int insertMusic(String albumName, int year, String musicName, int producerId) {
+		if ( year < 0 ) {
+			return -1;
+		}
+		
 		List<String> attributes = Arrays.asList(
 				MusicAttributes.ALBUM_NAME,
 				MusicAttributes.YEAR,
@@ -241,13 +318,64 @@ public class DatabaseInsertHelper {
 		return DatabaseInserter.insert(Table.MUSIC, attributes, data);
 	}
 	
-	public static int insertMusic(String albumName, int year, String musicName, String language, String diskType, String producerFirstName, String producerLastName) {
+	public static int insertMusic(String albumName, int year, String musicName, String language, 
+			String producerFirstName, String producerLastName) {
+		
+		int producerId = getOrAddPersonId(producerFirstName, producerLastName);
+		
+		return insertMusic(albumName, year, musicName, language, producerId);
+	}
+	
+	public static int insertMusic(String albumName, int year, String musicName, String language, int producerId) {
+		if ( year < 0 ) {
+			return -1;
+		}
+		
+		List<String> attributes = Arrays.asList(
+				MusicAttributes.ALBUM_NAME,
+				MusicAttributes.YEAR,
+				MusicAttributes.MUSIC_NAME,
+				MusicAttributes.LANGUAGE,
+				MusicAttributes.PRODUCER_ID);
+		
+		List<Object> data = Arrays.asList(albumName, year, musicName, language, producerId);
+		return DatabaseInserter.insert(Table.MUSIC, attributes, data);
+	}
+	
+	public static int insertMusic(String albumName, int year, String musicName, char diskType, int producerId) {
+		if ( year < 0 ) {
+			return -1;
+		}
+		
+		List<String> attributes = Arrays.asList(
+				MusicAttributes.ALBUM_NAME,
+				MusicAttributes.YEAR,
+				MusicAttributes.MUSIC_NAME,
+				MusicAttributes.DISK_TYPE,
+				MusicAttributes.PRODUCER_ID);
+		
+		int diskNum = 0;
+		if (diskType == 'v') {
+			diskNum = 1;
+		}
+		
+		List<Object> data = Arrays.asList(albumName, year, musicName, diskNum, producerId);
+		return DatabaseInserter.insert(Table.MUSIC, attributes, data);
+	}
+	
+	public static int insertMusic(String albumName, int year, String musicName, String language, char diskType, 
+			String producerFirstName, String producerLastName) {
+		
 		int producerId = getOrAddPersonId(producerFirstName, producerLastName);
 		
 		return insertMusic(albumName, year, musicName, language, diskType, producerId);
 	}
 	
-	public static int insertMusic(String albumName, int year, String musicName, String language, String diskType, int producerId) {
+	public static int insertMusic(String albumName, int year, String musicName, String language, char diskType, int producerId) {
+		if ( year < 0 ) {
+			return -1;
+		}
+		
 		List<String> attributes = Arrays.asList(
 				MusicAttributes.ALBUM_NAME,
 				MusicAttributes.YEAR,
@@ -256,7 +384,12 @@ public class DatabaseInsertHelper {
 				MusicAttributes.DISK_TYPE,
 				MusicAttributes.PRODUCER_ID);
 		
-		List<Object> data = Arrays.asList(albumName, year, musicName, language, diskType, producerId);
+		int diskNum = 0;
+		if (diskType == 'v') {
+			diskNum = 1;
+		}
+		
+		List<Object> data = Arrays.asList(albumName, year, musicName, language, diskNum, producerId);
 		return DatabaseInserter.insert(Table.MUSIC, attributes, data);
 	}
 	
@@ -266,7 +399,17 @@ public class DatabaseInsertHelper {
 		return insertMusicSinger(albumName, year, musicName, personId);
 	}
 	
+	public static int insertMusicSinger(String albumName, int year, String musicName, String firstName, String lastName, String middleName) {
+		int personId = getOrAddPersonId(firstName, lastName, middleName);
+		
+		return insertMusicSinger(albumName, year, musicName, personId);
+	}
+	
 	public static int insertMusicSinger(String albumName, int year, String musicName, int personId) {
+		if ( year < 0 ) {
+			return -1;
+		}
+		
 		List<String> attributes = Arrays.asList(
 				MusicSingerAttributes.ALBUM_NAME,
 				MusicSingerAttributes.YEAR,
@@ -285,10 +428,20 @@ public class DatabaseInsertHelper {
 	 * @param lastName
 	 * @return
 	 */
-	private static int getOrAddPersonId(String firstName, String lastName) {
+	public static int getOrAddPersonId(String firstName, String lastName) {
 		int personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
 		if (personId < 0) {
 			insertPeopleInvolved(firstName, lastName);
+			personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
+		}
+		
+		return personId;
+	}
+	
+	public static int getOrAddPersonId(String firstName, String lastName, String middleName) {
+		int personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
+		if (personId < 0) {
+			insertPeopleInvolved(firstName, lastName, middleName);
 			personId = DatabaseSelectHelper.getPersonInvolvedId(firstName, lastName);
 		}
 		
