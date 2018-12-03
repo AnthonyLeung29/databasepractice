@@ -1,6 +1,9 @@
 package com.app.database;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,6 +23,12 @@ public class DatabaseSelector extends DatabaseExecuteUpdate {
 		
 		return results;
 	}
+	
+	  public static ResultSet queryData(Connection con, String query) throws SQLException {
+	      Statement stmt = con.createStatement();
+	      ResultSet rs = stmt.executeQuery(query + ";");
+	      return rs;
+	  }
 	
 	// temporary for inserts. Where clasuses will be much more complicated
 	private static String getFormattedSelectSQL(String tableName, List<String> wantedCols, List<String> where) {
